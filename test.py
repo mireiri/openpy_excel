@@ -40,7 +40,7 @@ wb.save('test1.xlsx')
 
 # iter_rows()メソッドの返しを確認
 for row in ws.iter_rows(min_row=1, min_col=3,
-                               max_row=5, max_col=4):
+                        max_row=5, max_col=4):
     for cell in row:
         print(cell)
 
@@ -61,8 +61,9 @@ for row in ws2.iter_rows(min_row=3, min_col=1, max_row=8, max_col=1):
 # 取得したセルのデータを別のセルに書き込む
 data = []
 
-for cell in list(ws2.columns)[0]:
-    data.append(cell.value)
+for row in ws2.iter_rows(min_row=1, min_col=1, max_col=1):
+    for cell in row:
+        data.append(cell.value)
 
 print(data)
 
@@ -78,4 +79,3 @@ for col in ws.iter_cols(min_row=1, min_col=3,
                                max_row=5, max_col=4):
     for cell in col:
         print(cell)
-        
